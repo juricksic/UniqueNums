@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class UniqueNums {
+    public static void main(String[] args) {
+        int[] numbers = new int[5];
+        
+        int num = 0;
+        int numValues = 0;
+        boolean valid = true;
+        Scanner in = new Scanner(System.in);
+
+
+        while (numValues < 5) {
+            System.out.print("Enter a number: ");
+            num = in.nextInt();
+
+            do {
+                valid = true;
+                for (int i = 0; i < numValues; i++) {
+                    if (numbers[i] == num) {
+                        valid = false;
+                        System.out.println("Number already exists. Enter a unique number: ");
+                        num = in.nextInt();
+                        break;
+                    }
+                }
+            } while (!valid);
+             
+            numbers[numValues] = num;
+            numValues++;
+        }
+
+        in.close();
+
+        System.out.println("Numbers Array:");
+        for (int n : numbers) {
+            System.out.println(n);
+        }
+    }
+}
